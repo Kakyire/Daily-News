@@ -55,15 +55,9 @@ class CompactNewsItemTableViewCell: UITableViewCell {
     private lazy var articleImage: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.cornerRadius = 16
-        imageView.frame = CGRect(x: 10, y: 0, width: 200, height: 300)
-//        imageView.frame.size.height = 100
-//        imageView.frame.size.width = 200
-//        imageView.frame.origin.x = 10
-//        imageView.frame.origin.y = 0
-        imageView.contentMode = .scaleAspectFit
+        imageView.layer.cornerRadius = 10
+        imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.layer.masksToBounds = false
         
         return imageView
     }()
@@ -91,8 +85,9 @@ class CompactNewsItemTableViewCell: UITableViewCell {
             containerView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor,constant: -16),
             
             //imageView constraints
-            articleImage.heightAnchor.constraint(equalToConstant: 100),
+            articleImage.heightAnchor.constraint(equalToConstant: 200),
             articleImage.widthAnchor.constraint(equalToConstant: 100),
+            articleImage.centerYAnchor.constraint(equalTo: centerYAnchor),
             articleImage.topAnchor.constraint(equalTo: self.verticalSubstack.topAnchor,constant: 10),
             articleImage.leadingAnchor.constraint(equalTo: self.containerView.leadingAnchor,constant: 10),
 //            articleImage.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor,constant: -10),
