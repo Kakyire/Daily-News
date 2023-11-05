@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CompactNewsItemTableViewCell: UITableViewCell {
+class CompactNewsItemCell: UITableViewCell {
 
     
     static let cellId = "CompactNewsItemCell"
