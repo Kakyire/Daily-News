@@ -17,8 +17,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let scene = (scene as? UIWindowScene) else { return }
+        
+        let navigationController = UINavigationController(rootViewController: setupTabController())
+        navigationController.navigationBar.prefersLargeTitles = true
         window = UIWindow(windowScene: scene)
-        window?.rootViewController = HomeViewController()
+        window?.rootViewController = setupTabController()
         window?.makeKeyAndVisible()
     }
 
@@ -50,6 +53,51 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
+    private func setupTabController () -> UIViewController{
+        let homeScreen = HomeScreen()
+        homeScreen.title = K.home
+        homeScreen.tabBarItem = UITabBarItem(title: K.home, image: UIImage(systemName: "house.circle"), selectedImage: UIImage(systemName: "house.circle.fill"))
+        
+        
+        let techScreen = TechScreen()
+        techScreen.title = K.tech
+        techScreen.tabBarItem = UITabBarItem(title: K.tech, image: UIImage(systemName: "cursorarrow.click"), selectedImage: UIImage(systemName: "cursorarrow.click.2"))
+        
+        
+       
+        
+        let sportScreen = SportsScreen()
+        sportScreen.title = K.sports
+        sportScreen.tabBarItem = UITabBarItem(title: K.sports, image: UIImage(systemName: "sportscourt.circle"), selectedImage: UIImage(systemName: "sportscourt.circle.fill"))
+        
+        
+        let entertainmentScreen = EntertainmentScreen()
+        entertainmentScreen.title = K.entertainment
+        entertainmentScreen.tabBarItem = UITabBarItem(title: K.entertainment, image: UIImage(systemName: "play.circle"), selectedImage: UIImage(systemName: "play.circle.fill"))
+        
+        
+        let settingsScreen = SettingsScreen()
+        settingsScreen.title = K.settings
+        settingsScreen.tabBarItem = UITabBarItem(title: K.settings, image: UIImage(systemName: "gearshape.circle"), selectedImage: UIImage(systemName: "gearshape.circle.fill"))
+        
+        
+        let screens = [homeScreen, techScreen,sportScreen,entertainmentScreen]
+        
+        let viewControllers = screens.map { screen in
+            screen.view.backgroundColor = .systemBackground
+           let navController = UINavigationController(rootViewController: screen)
+            navController.navigationBar.prefersLargeTitles = true
+            
+           return navController
+        }
+        
+        let uiTab = UITabBarController()
+        uiTab.viewControllers = viewControllers
+        
+        
+        return uiTab
+        
+    }
 
 }
 

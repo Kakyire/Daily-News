@@ -25,6 +25,20 @@ struct NetworkHelper {
             .responseDecodable(of:T.self,completionHandler: complete)
     }
     
+    static func getEverything<T:Decodable>(about query:String,of:T.Type,page:Int ,parameters:[String:Any]? = nil,complete:@escaping (DataResponse<T,AFError>)->Void){
+        var params: [String : Any] = parameters ?? [:]
+        
+        params.updateValue(keys.nEWS_API_KEY, forKey: "apiKey")
+        params.updateValue(query, forKey: "q")
+        params.updateValue(page, forKey: "page")
+//        params.updateValue(10, forKey: "pageSize")
+        
+        AF.request(K.baseUrl+"everything",parameters: params)
+            .validate()
+            .responseDecodable(of:T.self,completionHandler: complete)
+    }
+    
+    
     static func get<T:Decodable,Param:Encodable>(endPoint:String,of:T.Type,parameters:Param? = nil,complete:@escaping (DataResponse<T,AFError>)->Void){
         
         let apiKey = "?apiKey=\(keys.nEWS_API_KEY)"

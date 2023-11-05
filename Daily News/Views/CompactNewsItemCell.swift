@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CompactNewsItemTableViewCell: UITableViewCell {
+class CompactNewsItemCell: UITableViewCell {
 
     
     static let cellId = "CompactNewsItemCell"
@@ -90,7 +90,7 @@ class CompactNewsItemTableViewCell: UITableViewCell {
             articleImage.centerYAnchor.constraint(equalTo: centerYAnchor),
             articleImage.topAnchor.constraint(equalTo: self.verticalSubstack.topAnchor,constant: 10),
             articleImage.leadingAnchor.constraint(equalTo: self.containerView.leadingAnchor,constant: 10),
-//            articleImage.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor,constant: -10),
+
             
             verticalSubstack.topAnchor.constraint(equalTo: self.containerView.topAnchor,constant: 16),
             verticalSubstack.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor,constant: -16),
