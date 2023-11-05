@@ -63,7 +63,6 @@ class HomeScreen: UIViewController, UITableViewDelegate{
 
 
 
-
 extension HomeScreen: UITableViewDataSource{
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
