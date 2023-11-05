@@ -34,7 +34,7 @@ class EntertainmentScreen: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        activityIndicator.startAnimating()
+//        activityIndicator.startAnimating()
         tableView.delegate = self
         tableView.dataSource = self
         getNews()
